@@ -87,9 +87,7 @@ namespace AM.UI.Console
 
             sf.Flights = TestData.listFlights;
 
-            System.Console.WriteLine("Flight dates to Madrid");
-            foreach (var item in sf.GetFlightDates("Madrid"))
-                System.Console.WriteLine(item);
+          
             sf.GetFlights("Destination", "Paris");
             sf.ShowFlightDetails(TestData.Airbusplane);
             System.Console.WriteLine("Number of programmed flights in 01/01/2022 week: ");
