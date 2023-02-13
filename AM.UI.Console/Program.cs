@@ -82,7 +82,30 @@ namespace AM.UI.Console
 
             ServiceFlight serviceFlight = new ServiceFlight();
 
-            serviceFlight.Flights = TestData.Flights;
+            serviceFlight.Flights = TestData.listFlights;
+            ServiceFlight sf = new ServiceFlight();
+
+            sf.Flights = TestData.listFlights;
+
+            System.Console.WriteLine("Flight dates to Madrid");
+            foreach (var item in sf.GetFlightDates("Madrid"))
+                System.Console.WriteLine(item);
+            sf.GetFlights("Destination", "Paris");
+            sf.ShowFlightDetails(TestData.Airbusplane);
+            System.Console.WriteLine("Number of programmed flights in 01/01/2022 week: ");
+            sf.ProgrammedFlightNumber(new DateTime(2022, 01, 01));
+                System.Console.WriteLine("Duration average of flights to Madrid: " + sf.DurationAverage("Madrid"));
+            foreach (var item in sf.OrderedDurationFlights())
+                 System.Console.WriteLine(item);
+            foreach (var item in sf.SeniorTravellers(TestData.flight1))
+                System.Console.WriteLine(item);
+            sf.diplay();
+
+
+            sf.FlightDetailsDel(TestData.BoingPlane);
+            System.Console.WriteLine("Average duration of flight To Paris; " + sf.DurationAverageDel("Paris"));
+
+           
 
 
 

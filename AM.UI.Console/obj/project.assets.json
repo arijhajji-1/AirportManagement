@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arij\\Downloads\\Airport-Management-main\\Airport-Management-main\\AM.UI.Console\\AM.UI.Console.csproj",
+      "projectUniqueName": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj",
       "projectName": "AM.UI.Console",
-      "projectPath": "C:\\Users\\Arij\\Downloads\\Airport-Management-main\\Airport-Management-main\\AM.UI.Console\\AM.UI.Console.csproj",
+      "projectPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj",
       "packagesPath": "C:\\Users\\Arij\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arij\\Downloads\\Airport-Management-main\\Airport-Management-main\\AM.UI.Console\\obj\\",
+      "outputPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arij\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Arij\\Downloads\\Airport-Management-main\\Airport-Management-main\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Arij\\Downloads\\Airport-Management-main\\Airport-Management-main\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
+            "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
             }
           }
         }
