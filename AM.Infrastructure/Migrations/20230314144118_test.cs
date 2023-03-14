@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AM.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,6 +42,19 @@ namespace AM.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Passenger", x => x.PassportNumber);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sections",
+                columns: table => new
+                {
+                    IdSection = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sections", x => x.IdSection);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,6 +121,36 @@ namespace AM.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Seats",
+                columns: table => new
+                {
+                    SeatId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    SeatNumber = table.Column<int>(type: "int", nullable: false),
+                    Size = table.Column<int>(type: "int", nullable: false),
+                    SectionIdSection = table.Column<int>(type: "int", nullable: false),
+                    PlaneFk = table.Column<int>(type: "int", nullable: true),
+                    PlaneKey = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Seats", x => x.SeatId);
+                    table.ForeignKey(
+                        name: "FK_Seats_MyPlane_PlaneKey",
+                        column: x => x.PlaneKey,
+                        principalTable: "MyPlane",
+                        principalColumn: "PlaneKey",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Seats_Sections_SectionIdSection",
+                        column: x => x.SectionIdSection,
+                        principalTable: "Sections",
+                        principalColumn: "IdSection",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ticket",
                 columns: table => new
                 {
@@ -134,6 +177,55 @@ namespace AM.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Reservations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateReservation = table.Column<DateTime>(type: "date", nullable: false),
+                    SeatId = table.Column<int>(type: "int", nullable: false),
+                    PassengerPassportNumber = table.Column<int>(type: "int", nullable: false),
+                    PassengerFk = table.Column<int>(type: "int", nullable: false),
+                    SeatFk = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reservations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Passenger_PassengerPassportNumber",
+                        column: x => x.PassengerPassportNumber,
+                        principalTable: "Passenger",
+                        principalColumn: "PassportNumber",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Reservations_Seats_SeatId",
+                        column: x => x.SeatId,
+                        principalTable: "Seats",
+                        principalColumn: "SeatId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_PassengerPassportNumber",
+                table: "Reservations",
+                column: "PassengerPassportNumber");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Reservations_SeatId",
+                table: "Reservations",
+                column: "SeatId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Seats_PlaneKey",
+                table: "Seats",
+                column: "PlaneKey");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Seats_SectionIdSection",
+                table: "Seats",
+                column: "SectionIdSection");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Ticket_PassengerFk",
                 table: "Ticket",
@@ -149,6 +241,9 @@ namespace AM.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Reservations");
+
+            migrationBuilder.DropTable(
                 name: "Staff");
 
             migrationBuilder.DropTable(
@@ -158,10 +253,16 @@ namespace AM.Infrastructure.Migrations
                 name: "Traveller");
 
             migrationBuilder.DropTable(
+                name: "Seats");
+
+            migrationBuilder.DropTable(
                 name: "Vols");
 
             migrationBuilder.DropTable(
                 name: "Passenger");
+
+            migrationBuilder.DropTable(
+                name: "Sections");
 
             migrationBuilder.DropTable(
                 name: "MyPlane");

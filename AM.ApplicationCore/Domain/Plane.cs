@@ -25,7 +25,7 @@ namespace AM.ApplicationCore.Domain
         public DateTime ManufactureDate { get; set; }
         public int PlaneKey { get; set; }
         public PlaneType PlaneType { get; set;}
-        public List<Seat>? listSeat { get; set; }
+        public virtual List<Seat>? listSeat { get; set; }
 
 
 
@@ -34,7 +34,7 @@ namespace AM.ApplicationCore.Domain
 
 
 
-        public List<Flight>? Flights { get; set; }
+        public virtual List<Flight>? Flights { get; set; }
 
         public override string? ToString()
         {

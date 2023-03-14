@@ -15,7 +15,7 @@ namespace AM.ApplicationCore.Domain
         [Required(ErrorMessage ="Name obligatoire"), MinLength(1)]
         public String Name { get; set; }
 
-        public List<Seat> SeatList { get; set; }
+        public virtual List<Seat> Seats{ get; set; }
 
     }
 }

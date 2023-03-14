@@ -19,9 +19,9 @@ namespace AM.ApplicationCore.Domain
         public DateTime EffectiveArrival { get; set; }
 
 
-        public List<Ticket>? Tickets { get; set; }
+        public virtual List<Ticket>? Tickets { get; set; }
        // [ForeignKey("PlaneId")]
-        public Plane? Plane { get; set; }
+        public virtual Plane? Plane { get; set; }
 
         [ForeignKey("Plane")]
         public int? PlaneFk { get; set; } // prop clé etrangére

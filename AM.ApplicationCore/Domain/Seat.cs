@@ -17,14 +17,14 @@ namespace AM.ApplicationCore.Domain
         public int SeatNumber { get; set; }
         [Range(0,20)]
         public int Size { get; set; }
-        public Section section { get; set; }
+        public virtual Section Section { get; set; }
         public Seat() { }
 
-        public Reservation reservation { get; set; }
+        public virtual List<Reservation>? Reservations { get; set; }
 
         [ForeignKey("Plane")]
-        public int? PlaneFk { get; set; }
-        public  Plane plane { get; set; }
+        public virtual int? PlaneFk { get; set; }
+        public virtual Plane plane { get; set; }
 
 
 

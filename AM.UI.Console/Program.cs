@@ -69,7 +69,7 @@ var am = new AmContext();
 
 
 // ===== affichage
-foreach (var item in am.Flights.ToList())
-{
-    Console.WriteLine(item.FlightId + ", " + item.Plane.Capacity);
-}
+//foreach (var item in am.Flights.ToList())
+//{
+//    Console.WriteLine(item.FlightId + ", " + item.Plane.Capacity);
+//}
