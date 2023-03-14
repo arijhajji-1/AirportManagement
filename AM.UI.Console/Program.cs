@@ -1,112 +1,75 @@
-﻿using AM.ApplicationCore;
-using AM.ApplicationCore.Domaine;
+﻿// See https://aka.ms/new-console-template for more information
+using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Services;
-using System.Collections;
-using System.Collections.Generic;
+using AM.Infrastructure;
 
-namespace AM.UI.Console
+using System.Numerics;
+using Plane = AM.ApplicationCore.Domain.Plane;
+Plane p1 = new Plane();
+
+p1.Capacity = 200;
+p1.ManufactureDate = new DateTime(2015, 01, 16);
+p1.PlaneType = PlaneType.Boing;
+p1.PlaneKey = 2;
+
+Console.WriteLine(p1);
+
+Plane p2 = new Plane(10, new DateTime(2015, 01, 16), PlaneType.Airbus);
+
+Console.WriteLine(p2);
+
+Passenger passenger = new Passenger();
+passenger.PassengerType();
+
+Staff staff = new Staff();
+staff.PassengerType();
+
+Traveller traveller = new Traveller();
+traveller.PassengerType();
+
+Console.WriteLine("Hello, World!");
+
+ServiceFlight serviceFlight = new ServiceFlight();
+//serviceFlight.Flights = TestData.listFlights;
+//Methode Anonyme
+serviceFlight.GetFlights("Paris", 
+    delegate (string value, Flight f) 
+    { return f.Destination == value; }
+);
+//expression lamda
+serviceFlight.GetFlights("11/11/2022",
+    delegate (string value, Flight f)
+    { return f.FlightDate ==DateTime.Parse( value); }
+);
+
+var am = new AmContext();
+
+// ======= add
+
+//
+//am.Flights.Add(new Flight()
+//{
+//    Departure = "Tunis",
+//    Destination = "Sousse",
+//    FlightDate = new DateTime(2022, 2, 2),
+//    EffectiveArrival = DateTime.Now,
+//    EstimatedDuration = 1,
+//    Plane = new Plane()
+//    {
+//        Capacity = 15,
+//        ManufactureDate = DateTime.Now,
+//        PlaneType = PlaneType.Boing
+//    }
+//}); 
+
+//am.SaveChanges();
+
+
+
+
+
+// ===== affichage
+foreach (var item in am.Flights.ToList())
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            Plane plane = new Plane();
-            plane.MyPlaneType = PlaneType.Airbus;
-            plane.Capacity = 200;
-            plane.ManufactureDate = new DateTime(2018, 11, 10);
-
-
-            Plane p2 = new Plane(PlaneType.Boing, 300, DateTime.Now);
-            System.Console.WriteLine(p2);
-            Plane p = new Plane
-            {
-                MyPlaneType = PlaneType.Airbus,
-                Capacity = 150,
-                ManufactureDate = new DateTime(2015, 02, 03)
-            };
-            Boolean x;
-
-            System.Console.WriteLine(p);
-            Passenger passenger = new Passenger();
-            x = passenger.CheckProfile("arij", "hajji", "arij.hajji@esprit.tn");
-            System.Console.WriteLine(x);
-            passenger.GetPassengerType();
-
-            Staff staff = new Staff();
-            staff.GetPassengerType();
-            Traveller traveller = new Traveller();
-            traveller.GetPassengerType();
-
-
-            System.Console.WriteLine(passenger.GetPassengerType());
-            System.Console.WriteLine(staff.GetPassengerType());
-            System.Console.WriteLine(traveller.GetPassengerType());
-
-            /*ArrayList list= new ArrayList();
-            list.Add(10);
-            list.Add("ABC");
-            list.Add('t');
-
-            for (int i = 0; i < list.Count ; i++)
-            {
-                System.Console.WriteLine(list[i]);
-            }
-
-
-            foreach (var item in list)
-            {
-                System.Console.WriteLine(item);
-            }
-
-            List<Passenger> list2= new List<Passenger>();
-            list2.Add(new Passenger() { BirthDate = DateTime.Now, FirstName="Foulen",LastName="Fouleni" });
-
-            List<Passenger> list3= new List<Passenger>()
-            {
-                new () {BirthDate = DateTime.Now, FirstName="Foulen",LastName="Fouleni"},
-                new Passenger() {BirthDate = DateTime.Now, FirstName="Foulen2",LastName="Fouleni2"}
-            };
-
-            List<Traveller> list4= new List<Traveller>()
-            {
-                new () {BirthDate = DateTime.Now, Nationality="TN"}
-            };
-            List<Staff> list5= new List<Staff>()
-            {
-                new () {BirthDate = DateTime.Now, PasseportNumber="78946413TN"}
-            };
-
-            //list3.AddRange(list4);
-
-            list3 = new List<Passenger>(list4);*/
-
-            ServiceFlight serviceFlight = new ServiceFlight();
-
-            serviceFlight.Flights = TestData.listFlights;
-            ServiceFlight sf = new ServiceFlight();
-
-            sf.Flights = TestData.listFlights;
-
-          
-            sf.GetFlights("Destination", "Paris");
-            sf.ShowFlightDetails(TestData.Airbusplane);
-            System.Console.WriteLine("Number of programmed flights in 01/01/2022 week: ");
-            sf.ProgrammedFlightNumber(new DateTime(2022, 01, 01));
-                System.Console.WriteLine("Duration average of flights to Madrid: " + sf.DurationAverage("Madrid"));
-            foreach (var item in sf.OrderedDurationFlights())
-                 System.Console.WriteLine(item);
-            foreach (var item in sf.SeniorTravellers(TestData.flight1))
-                System.Console.WriteLine(item);
-            sf.diplay();
-
-
-            sf.FlightDetailsDel(TestData.BoingPlane);
-            System.Console.WriteLine("Average duration of flight To Paris; " + sf.DurationAverageDel("Paris"));
-
-           
-
-
-
-        }
-    }
+    Console.WriteLine(item.FlightId + ", " + item.Plane.Capacity);
 }

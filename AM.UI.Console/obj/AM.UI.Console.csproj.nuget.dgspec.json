@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj": {}
+    "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+    "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
         "projectName": "AM.ApplicationCore",
-        "projectPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
+        "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Arij\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\obj\\",
+        "outputPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arij\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.entityframeworkcore.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -55,18 +61,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj": {
+    "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj",
-        "projectName": "AM.UI.Console",
-        "projectPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj",
+        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj",
+        "projectName": "AM.Infrastructure",
+        "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Arij\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.UI.Console\\obj\\",
+        "outputPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arij\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -83,8 +89,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Arij\\Desktop\\4twin\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
+              "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
               }
             }
           }
@@ -98,6 +104,26 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.entityframeworkcore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.entityframeworkcore.Proxies": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.entityframeworkcore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.entityframeworkcore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -114,7 +140,77 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj",
+        "projectName": "AM.UI.Console",
+        "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.UI.Console\\AM.UI.Console.csproj",
+        "packagesPath": "C:\\Users\\Arij\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.UI.Console\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Arij\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+                "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
+              },
+              "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.entityframeworkcore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

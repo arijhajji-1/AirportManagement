@@ -1,7 +1,8 @@
-﻿using AM.ApplicationCore.Infterfaces;
+﻿using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq; 
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,225 +10,96 @@ namespace AM.ApplicationCore.Services
 {
     public class ServiceFlight : IServiceFlight
     {
-        public List<Flight> Flights { get; set;} = new List<Flight>();
-        public Action<Plane> FlightDetailsDel;
-        public Func<string, double> DurationAverageDel;
+        //TP2-Q3: Créer la propriété Flights et l’initialiser à une liste vide
+        public List<Flight> Flights { get; set; } = new List<Flight>();
 
-        public ServiceFlight()
+        //TP2-Q6: Implémenter la méthode GetFlightDates(string destination)
+        public List<DateTime> GetFlightDates(string destination)
         {
+            List<DateTime> ls = new List<DateTime>();
+            for (int j = 0; j < Flights.Count; j++)
+                if (Flights[j].Destination.Equals(destination))
+                    ls.Add(Flights[j].FlightDate);
+            return ls;
+            ////TP2-Q7: Reformuler la requête avec foreach
+            //List<DateTime> ls = new List<DateTime>();
+            //foreach (Flight f in Flights)
+            //    if (f.Destination.Equals(destination))
+            //        ls.Add(f.FlightDate);
+            //return ls;
 
-            // DurationAverageDel = DurationAverage;
-            DurationAverageDel = dest =>
-            {
-                return (from f in Flights
-                        where f.Destination.Equals(dest)
-                        select f.EstimatedDuration).Average();
-            };
-            // FlightDetailsDel = ShowFlightDetails;
-            FlightDetailsDel = p =>
-            {
-                var req = from f in Flights
-                          where f.Plane == p
-                          select new { f.FlightDate, f.Destination };
-                foreach (var v in req)
-                    Console.WriteLine("Flight Date; " + v.FlightDate + " Flight destination: " + v.Destination);
-            };
+            ////TP2-Q9: Reformuler la méthode en utilisant LINQ
+            //IEnumerable<DateTime> req = from f in Flights
+            //                            where f.Destination.Equals(destination)
+            //                            select f.FlightDate;
+            //return req.ToList();
+            //with LINQ language
+
+            ////TP2-Q19: Reformuler la méthode en utilisant Lambda Expression
+            // IEnumerable<DateTime> reqLambda = Flights.Where(f => f.Destination.Equals(destination)).Select(f => f.FlightDate);
+            //return reqLambda.ToList();
         }
 
-        /*List<DateTime> GetFlightDates(string destination)
-        {
-            List<DateTime> result = new List<DateTime>();
-            for (int i = 0; i < Flights.Count; i++)
-            {
-                Flight flight = Flights[i];
-                if (flight.Destination == destination)
-                {
-                    result.Add(flight.FlightDate);
-                }
-            }
-            return result;
-        }*/
 
-        /*IEnumerable<DateTime> GetFlightDates(string destination)
-        {
-            for (int i = 0; i < Flights.Count; i++)
-            {
-                Flight flight = Flights[i];
-                if (flight.Destination == destination)
-                {
-                    yield return flight.FlightDate;
-                }
-            }
-        }*/
 
-        /*IEnumerable<DateTime> GetFlightDates(string destination)
+        //TP2-Q8: Implémenter la méthode GetFlights(string filterType, string filterValue)
+        public void GetFlights(string filterValue,Func<string,Flight,bool> condition)
         {
-            foreach (var flight in Flights)
+            foreach (Flight f in Flights)
             {
-                if (flight.Destination == destination)
-                {
-                    yield return flight.FlightDate;
-                }
-            }
-        }*/
-        ///  question 8 
-        public void GetFlights(string filterType, string filterValue)
-        {
-            switch (filterType)
-            {
-                case "Destination":
-                    {
-                        var result = Flights.Where(f => f.Destination == filterValue).ToList();
-                        foreach (var f in result)
-                        {
-                            Console.WriteLine(f);
-                        }
-                    }
-                    break;
-                case "Departure":
-                    {
-                        var result = Flights.Where(f => f.Departure == filterValue).ToList();
-                        foreach (var f in result)
-                        {
-                            Console.WriteLine(f);
-                        }
-                    }
-                    break;
-                case "FlightDate":
-                    {
-                        var result = Flights.Where(f => f.FlightDate == DateTime.Parse(filterValue)).ToList();
-                        foreach (var f in result)
-                        {
-                            Console.WriteLine(f);
-                        }
-                    }
-                    break;
-                case "FlightId":
-                    {
-                        var result = Flights.Where(f => f.FlightId == int.Parse(filterValue)).ToList();
-                        foreach (var f in result)
-                        {
-                            Console.WriteLine(f);
-                        }
-                    }
-                    break;
-                case "EffectiveArrival":
-                    {
-                        var result = Flights.Where(f => f.EffectiveArrival == DateTime.Parse(filterValue)).ToList();
-                        foreach (var f in result)
-                        {
-                            Console.WriteLine(f);
-                        }
-                    }
-                    break;
-                case "EstimatedDuration":
-                    {
-                        var result = Flights.Where(f => f.EstimatedDuration == int.Parse(filterValue)).ToList();
-                        foreach (var f in result)
-                        {
-                            Console.WriteLine(f);
-                        }
-                    }
-                    break;
+                if (condition(filterValue,f))
+                    Console.WriteLine(f);
             }
         }
-        //quest9
-        IEnumerable<DateTime> GetFlightDates(string destination)
-        {
-            //foreach (var flight in Flights)
-            //{
-            //    if (flight.Destination == destination)
-            //    {
-            //        yield return flight.FlightDate;
-            //    }
-            //}
-
-            //9
-            IEnumerable<DateTime> query = from f in Flights
-                                          where f.Destination == destination
-                                          select f.FlightDate;
-            return query;
-        }
-        //quest10
         public void ShowFlightDetails(Plane plane)
         {
-            var query = from f in Flights
-                        where f.Plane.PlaneId == plane.PlaneId
-                        select new { f.FlightDate, f.Destination };
-            foreach (var item in query)
-            {
-                Console.WriteLine(item.Destination + item.FlightDate);
-            }
-
+            var req = from f in Flights
+                      where f.Plane == plane
+                      select new { f.FlightDate, f.Destination };
+             // var reqLambda = Flights.Where(f => f.Plane == plane).Select(p => new { f.FlightDate, f.Destination });
+            foreach (var v in req)
+                Console.WriteLine("Flight Date; " + v.FlightDate + " Flight destination: " + v.Destination);
         }
-        //quest11
         public int ProgrammedFlightNumber(DateTime startDate)
         {
-            var query = from f in Flights
-                        where ((f.FlightDate >= startDate) && (startDate - f.FlightDate).TotalDays < 7)
-                        select f;
-            ;
-
-
-            return query.Count();
-
-
-            //2eme methode
-            /* return Flights.Count(f => ((f.FlightDate >= startDate) && (startDate - f.FlightDate).TotalDays < 7)
-                          );*/
-
+            var req = from f in Flights
+                      where DateTime.Compare(f.FlightDate, startDate) > 0 && (f.FlightDate - startDate).TotalDays < 7
+                      select f;
+            // var reqLambda = Flights.Where(f => DateTime.Compare(f.FlightDate, startDate) > 0 && (f.FlightDate - startDate).TotalDays < 7);
+            return req.Count();
         }
+
         public double DurationAverage(string destination)
         {
-            var query = from f in Flights
-                        where (f.Destination == destination)
-                        select f.EstimatedDuration;
-            return query.Average();
-
-
+            return (from f in Flights
+                    where f.Destination.Equals(destination)
+                    select f.EstimatedDuration).Average();
+            // return Flights.Where(f=>f.Destination.Equals(destination)).Select(f=> f.EstimatedDuration).Average();
         }
         public IEnumerable<Flight> OrderedDurationFlights()
         {
-            var query = from f in Flights
-                        orderby f.EstimatedDuration descending
-                        select f;
-            return query;
-
-        }
-       
-
-       
-        List<DateTime> IServiceFlight.GetFlightDates(string destination)
-        {
-            List<DateTime> ls = new List<DateTime>();
-          
-            IEnumerable<DateTime> req = from f in Flights
-                                        where f.Destination.Equals(destination)
-                                        select f.FlightDate;
-
-            return req.ToList();
+            var req = from f in Flights
+                      orderby f.EstimatedDuration descending
+                      select f;
+            return req;
+            // var reqLambda = Flights.OrderByDescending(f => f.EstimatedDuration);
         }
 
+        //public IEnumerable<string> SeniorTravellers(Flight f)
+        //{
+        //    var oldTravellers = from p in f.Passengers.OfType<Traveller>()
+        //                        orderby p.BirthDate
+        //                        select p.Nationality;
+        //    // var reqLambda = f.Passengers.OfType<Traveller>().OrderBy(p => p.BirthDate).Take(3);
 
-        public IEnumerable<Traveller> SeniorTravellers(Flight f)
-        {
-            var oldTravellers = from p in f.Passengers.OfType<Traveller>()
-                                orderby p.BirthDate
-                                select p;
-
-            // var reqLambda = f.Passengers.OfType<Traveller>().OrderBy(p => p.BirthDate).Take(3);
-
-
-            return oldTravellers.Take(3);
-            //if we want to skip 3
-            //return oldTravellers.Skip(3);
-        }
-
-        public IGrouping<string, IEnumerable<Flight>> DestinationGroupedFlights()
+        //    return oldTravellers.Take(3);
+        //    //if we want to skip 3
+        //    //return oldTravellers.Skip(3);
+        //}
+        public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()
         {
             var req = from f in Flights
                       group f by f.Destination;
-
             //  var reqLambda = Flights.GroupBy(f => f.Destination);
 
             foreach (var g in req)
@@ -235,27 +107,72 @@ namespace AM.ApplicationCore.Services
                 Console.WriteLine("Destination: " + g.Key);
                 foreach (var f in g)
                     Console.WriteLine("Décollage: " + f.FlightDate);
-
             }
-            return (IGrouping<string, IEnumerable<Flight>>)req;
+            return req;
         }
-        //pour tester la méthode DestinationGroupedFlights
-        public void diplay()
+
+        public IEnumerable<Traveller> SeniorTravellers(Flight flight)
         {
-            var result =
-                (from f in Flights
-                 group f by f.Destination);
+            /*
+              var quer = from p in flight.Passengers.OfType<Traveller>().ToList()
+                          .OrderByDescending(p => p.BirthDate).Take(3)
+                         select p;
+            */
 
-            foreach (var destination in result)
+            // var query = flight.Passengers.OfType<Traveller>().ToList()
+            //             .OrderByDescending(p=>p.BirthDate).Take(3);
+            // return query;
+            return null; 
+        }
+
+        public IEnumerable<IGrouping<string,Flight>> DestinationGroupedFlights2()
+        {
+            var query = from f in Flights
+                        group f by f.Destination; // ki nestaamlou group menestaamlouch select
+
+            //var query = Flights.GroupBy(f=>f.Destination)
+
+            foreach(var item in query)
             {
-                Console.WriteLine(" destination =  " + destination.Key); // key = city
-                foreach (var flight in destination)
+                Console.WriteLine("Destination " + item.Key); 
+                foreach(var f in item)
                 {
-                    Console.WriteLine("Flights Details" + flight.FlightDate);
-
+                    Console.WriteLine("Decollage : " + f.FlightDate); 
                 }
             }
+            return query;
 
+          
         }
+
+
+
+        public Action<Plane> FlightDetailsDel { get; set; }
+        public Func<string,double> DurationAverageDel { get; set; }
+        
+        public ServiceFlight()
+        {
+            //FlightDetailsDel = ShowFlightDetails;
+            //DurationAverageDel = DurationAverage;
+            FlightDetailsDel = delegate (Plane plane) // (Plane plane) =>
+            {
+                var req = from f in Flights
+                          where f.Plane == plane
+                          select new { f.FlightDate, f.Destination };
+                foreach (var v in req)
+                    Console.WriteLine("Flight Date; " + v.FlightDate + " Flight destination: " + v.Destination);
+
+            };
+
+
+            DurationAverageDel = destination =>
+            {
+                
+                return (from f in Flights
+                        where f.Destination.Equals(destination)
+                        select f.EstimatedDuration).Average();
+            }; 
+        }
+
     }
 }
