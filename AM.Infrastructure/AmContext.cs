@@ -16,6 +16,9 @@ namespace AM.Infrastructure
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Staff> Staffs { get; set; }
+        public DbSet<Seat> Seats { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

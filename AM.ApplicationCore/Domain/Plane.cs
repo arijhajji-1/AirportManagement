@@ -25,9 +25,11 @@ namespace AM.ApplicationCore.Domain
         public DateTime ManufactureDate { get; set; }
         public int PlaneKey { get; set; }
         public PlaneType PlaneType { get; set;}
+        public List<Seat>? listSeat { get; set; }
 
 
-       
+
+
 
 
 

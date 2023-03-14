@@ -26,6 +26,8 @@ namespace AM.ApplicationCore.Domain
         [RegularExpression("[0-9]{8}")]
         public String TelNumber { get; set; }
 
+        public Reservation reservation { get; set; }
+
 
 
         //public bool CheckProfile(string Fn, string Ln, string Em = null)
