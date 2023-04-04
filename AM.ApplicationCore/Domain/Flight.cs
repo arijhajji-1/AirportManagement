@@ -21,7 +21,7 @@ namespace AM.ApplicationCore.Domain
 
         public virtual List<Ticket>? Tickets { get; set; }
        // [ForeignKey("PlaneId")]
-        public virtual Plane? Plane { get; set; }
+        public virtual  Plane? Plane { get; set; }
 
         [ForeignKey("Plane")]
         public int? PlaneFk { get; set; } // prop clé etrangére

@@ -2,14 +2,43 @@
 using AM.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServiceFlight : IServiceFlight
+    public class ServiceFlight : Service<Flight>, IServiceFlight
     {
+        private readonly IUnitOfWork uow ; 
+        //public ServiceFlight(IUnitOfWork uow)
+        //{
+        //    this.uow = uow;
+        //}
+
+        public ServiceFlight(IUnitOfWork unitOfWork) : base(unitOfWork) { }
+
+        //public void add(flight flight)
+        //{
+        //    uow.repository<flight>().add(flight);
+        //    uow.save(); 
+        //}
+
+        //public void update(flight flight)
+        //{
+        //    uow.repository<flight>().update(flight);
+        //    uow.save(); 
+        //}
+
+        //public  ilist<flight> getall()
+        //{
+        //    return uow.repository<flight>().getall().tolist() ;
+        //}
+
+
+
+
         //TP2-Q3: Créer la propriété Flights et l’initialiser à une liste vide
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
@@ -145,7 +174,45 @@ namespace AM.ApplicationCore.Services
           
         }
 
+        public void Add(Plane entity)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Update(Plane entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Plane entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Expression<Func<Plane, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        Plane IService<Plane>.GetById(params object[] id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Plane> IService<Plane>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Plane> GetMany(Expression<Func<Plane, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Plane Get(Expression<Func<Plane, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
 
         public Action<Plane> FlightDetailsDel { get; set; }
         public Func<string,double> DurationAverageDel { get; set; }

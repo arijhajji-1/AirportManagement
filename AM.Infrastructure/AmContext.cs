@@ -16,23 +16,21 @@ namespace AM.Infrastructure
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Staff> Staffs { get; set; }
+
         public DbSet<Seat> Seats { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(@"data source = (localdb)\mssqllocaldb;" +
-        //        "initial catalog=ArijHajji; integrated security = true"); 
 
-        //}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=ArijHajji;Integrated Security=true");
-            //base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(@"data source = (localdb)\mssqllocaldb;" +
+                "initial catalog=ArijHajji; integrated security = true");
+            optionsBuilder.UseLazyLoadingProxies(true); 
+
         }
+
         //data annotation
 
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,6 +55,8 @@ namespace AM.Infrastructure
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            modelBuilder.ApplyConfiguration(new ReservationConfiguration());
+            modelBuilder.ApplyConfiguration(new SectionConfiguration());
 
 
 
@@ -70,6 +70,9 @@ namespace AM.Infrastructure
             modelBuilder.Entity<Staff>().ToTable("Staff");
             modelBuilder.Entity<Traveller>().ToTable("Traveller");
             modelBuilder.Entity<Passenger>().ToTable("Passenger");
+            modelBuilder.Entity<Reservation>().HasOne(r => r.Seat)
+                .WithMany(p => p.Reservations)
+                .HasForeignKey(f => f.SeatFk);
             //modelBuilder.Entity<Ticket>().HasKey(p => new { p.FlightFk, p.PassengerFk });  
         }
 

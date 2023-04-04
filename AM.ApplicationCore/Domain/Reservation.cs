@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +8,6 @@ namespace AM.ApplicationCore.Domain
 {
     public class Reservation
     {
-        [Key]
-        public int Id { get; set; }
         public DateTime DateReservation { get; set; }
 
         public virtual Seat Seat { get; set; }
@@ -20,6 +17,4 @@ namespace AM.ApplicationCore.Domain
         public int SeatFk { get; set; }
 
     }
-  
-
 }

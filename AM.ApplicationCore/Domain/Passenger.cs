@@ -26,8 +26,6 @@ namespace AM.ApplicationCore.Domain
         [RegularExpression("[0-9]{8}")]
         public String TelNumber { get; set; }
 
-        public virtual List<Reservation> Reservations { get; set; }
-
 
 
         //public bool CheckProfile(string Fn, string Ln, string Em = null)
@@ -43,7 +41,10 @@ namespace AM.ApplicationCore.Domain
             Console.WriteLine("I'm a passenger");
         }            
         public virtual List<Ticket>? Tickets { get; set; }
-       
+
+        public virtual List<Reservation>? Reservations { get; set; }
+
+
         public override string? ToString()
         {
             return base.ToString();

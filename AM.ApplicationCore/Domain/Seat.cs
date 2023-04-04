@@ -8,25 +8,24 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Domain
 {
-   public class Seat
+    public class Seat
     {
         [Key]
         public int SeatId { get; set; }
-        [Required(ErrorMessage = "Name obligatoire"), MinLength(1)]
-        public String Name { get; set; }
-        public int SeatNumber { get; set; }
-        [Range(0,20)]
-        public int Size { get; set; }
-        public virtual Section Section { get; set; }
-        public Seat() { }
+        [Required(ErrorMessage ="Le champ Name doit être obligatoire"), MinLength(1)]
+        public string Name { get; set; }
+        public string SeatNumber { get; set; }
 
-        public virtual List<Reservation>? Reservations { get; set; }
+        [Range(0, 20)]
+        public int Size { get; set; }
 
         [ForeignKey("Plane")]
-        public virtual int? PlaneFk { get; set; }
-        public virtual Plane plane { get; set; }
+        public int? PlaneFK; // pour forcer le nom de la clé etrangére
+        
+        public virtual Plane Plane { get; set; }
 
+        public virtual Section Section { get; set; }
 
-
+        public virtual List<Reservation>? Reservations { get; set; }
     }
 }

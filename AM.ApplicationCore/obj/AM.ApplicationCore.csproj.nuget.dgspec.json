@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {}
+    "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+    "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
+        "projectUniqueName": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
         "projectName": "AM.ApplicationCore",
-        "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
+        "projectPath": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Arij\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\obj\\",
+        "outputPath": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arij\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -42,7 +42,7 @@
           "dependencies": {
             "Microsoft.entityframeworkcore.Abstractions": {
               "target": "Package",
-              "version": "[7.0.3, )"
+              "version": "[7.0.4, )"
             }
           },
           "imports": [

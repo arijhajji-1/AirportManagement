@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AM.ApplicationCore",
+    "\\AM.ApplicationCore\\Domain"
   ],
-  "SelectedNode": "\\AirportManagement.sln",
+  "SelectedNode": "\\SalimFerhat.sln",
   "PreviewInSolutionExplorer": false
 }

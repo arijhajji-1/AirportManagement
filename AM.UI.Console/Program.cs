@@ -2,9 +2,6 @@
 using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Services;
 using AM.Infrastructure;
-
-using System.Numerics;
-using Plane = AM.ApplicationCore.Domain.Plane;
 //Plane p1 = new Plane();
 
 //p1.Capacity = 200;
@@ -13,11 +10,11 @@ using Plane = AM.ApplicationCore.Domain.Plane;
 //p1.PlaneKey = 2;
 
 //Console.WriteLine(p1);
-
+ 
 //Plane p2 = new Plane(10, new DateTime(2015, 01, 16), PlaneType.Airbus);
 
 //Console.WriteLine(p2);
-
+  
 //Passenger passenger = new Passenger();
 //passenger.PassengerType();
 
@@ -41,6 +38,8 @@ using Plane = AM.ApplicationCore.Domain.Plane;
 //    delegate (string value, Flight f)
 //    { return f.FlightDate ==DateTime.Parse( value); }
 //);
+
+
 
 var am = new AmContext();
 
@@ -69,7 +68,12 @@ var am = new AmContext();
 
 
 // ===== affichage
-//foreach (var item in am.Flights.ToList())
-//{
-//    Console.WriteLine(item.FlightId + ", " + item.Plane.Capacity);
-//}
+foreach(var item in am.Flights.ToList())
+{
+    Console.WriteLine(item.FlightId + ", " + item.Plane.Capacity); 
+}
+
+
+
+
+

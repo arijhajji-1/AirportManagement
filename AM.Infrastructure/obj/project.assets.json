@@ -1219,7 +1219,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Microsoft.entityframeworkcore.Abstractions": "7.0.3"
+          "Microsoft.entityframeworkcore.Abstractions": "7.0.4"
         },
         "compile": {
           "bin/placeholder/AM.ApplicationCore.dll": {}
@@ -3663,11 +3663,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj",
       "projectName": "AM.Infrastructure",
-      "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.Infrastructure\\AM.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Arij\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arij\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3684,8 +3684,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
-              "projectPath": "C:\\Users\\Arij\\Desktop\\EmnaKhanfir\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
+            "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.ApplicationCore\\AM.ApplicationCore.csproj"
             }
           }
         }
