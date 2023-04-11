@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Domain
 {
-    [Owned]
     public class FullName
     {
-        //[MinLength(3, ErrorMessage = "doit être >3"), MaxLength(25, ErrorMessage = " doit être <25")]
-        [Required(ErrorMessage = "Le champ Name doit être obligatoire"), MinLength(1)]
-        public String FirstName { get; set; }
-
-        [Required(ErrorMessage ="Le champ Name doit être obligatoire"), MinLength(1)]
-        public String LastName { get; set; }
-
+        [MaxLength(25, ErrorMessage ="Longeur maximale 25")]
+        [MinLength(3)]
+        [RegularExpression(@"^[a-zA-Z]{3,25}$", ErrorMessage = "Invalid Phone Number!")]
+        public string FirstName { get; set; }
+        [MaxLength(25)]
+        [MinLength(3)]
+        public string LastName { get; set; }
     }
 }

@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,18 +13,19 @@ namespace AM.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
-            builder.HasKey(f => f.FlightId);
-            builder.ToTable("Vols");
+            //Many to Many
+            //builder.HasMany(f => f.Passengers)
+            //.WithMany(p => p.Flights)
+            //.UsingEntity(
+            //    j => j.ToTable("Reservation")
+            //    );//Table d'association
 
-            // Configuration 1..*
+            //One To Many
             builder.HasOne(f => f.Plane)
                 .WithMany(p => p.Flights)
-                .HasForeignKey(f => f.PlaneFk) 
-                .OnDelete(DeleteBehavior.SetNull);
-            // config *..*
-            //builder.HasMany(f => f.Passengers)
-            //    .WithMany(p => p.Flights)
-            //    .UsingEntity(pf => pf.ToTable("MyReservations")) ; 
+                .HasForeignKey(f => f.PlaneId)
+                .OnDelete(DeleteBehavior.ClientSetNull); //The values of foreign key properties in dependent entities are set to null when the related principal is deleted
+
         }
     }
 }

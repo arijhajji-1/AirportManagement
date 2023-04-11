@@ -7,43 +7,37 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Domain
 {
+    public enum PlaneType
+    {
+        Boing,
+        Airbus
+    }
     public class Plane
     {
+        public int PlaneId { get; set; }
+        public PlaneType PlaneType { get; set; }
+        public DateTime ManufactureDate { get; set; }
+        [Range(0, int.MaxValue)]
+        public int Capacity { get; set; }
+        //prop de navigation
+        public virtual List<Flight> Flights { get; set; }
+
+        //TP1-Q6: Réimplémenter la méthode ToString()
+        public override string ToString()
+        {
+            return "PlaneType: " + PlaneType + " ManufactureDate: " + ManufactureDate + " Capacity: " + Capacity;
+        }
+        //TP1-Q7: Constructure non paramétré
         public Plane()
         {
-        }
 
-        public Plane(int capacity, DateTime manufactureDate, PlaneType planetype)
+        }
+        //TP1-Q8: Constructure paramétré
+        public Plane(PlaneType pt, int capacity, DateTime date)
         {
+            PlaneType = pt;
             Capacity = capacity;
-            ManufactureDate = manufactureDate;
-            PlaneType = planetype;
-        }
-
-        [Range(0,int.MaxValue)]
-        public int Capacity { get; set; }
-        public DateTime ManufactureDate { get; set; }
-        public int PlaneKey { get; set; }
-        public PlaneType PlaneType { get; set;}
-           
-
-       
-
-        public virtual List<Seat>? Seats { get; set; }
-
-
-        public virtual List<Flight>? Flights { get; set; }
-
-        public override string? ToString()
-        {
-            return base.ToString();
+            ManufactureDate = date;
         }
     }
-
-}
-
-
-public enum PlaneType{
-Boing,Airbus
-
 }

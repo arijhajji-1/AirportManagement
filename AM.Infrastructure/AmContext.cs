@@ -1,4 +1,5 @@
 ﻿using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Interfaces;
 using AM.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,83 +8,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AM.Infrastructure
 {
-    public class AmContext: DbContext
+    public class AMContext: DbContext
     {
-        public DbSet<Traveller> Travellers { get; set; }
-        public DbSet<Passenger> Passengers { get; set; }
-        public DbSet<Flight> Flights { get; set; }
+
         public DbSet<Plane> Planes { get; set; }
-        public DbSet<Staff> Staffs { get; set; }
-
-        public DbSet<Seat> Seats { get; set; }
-        public DbSet<Section> Sections { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
-
-
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+        public DbSet<Traveller> Travellers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source = (localdb)\mssqllocaldb;" +
-                "initial catalog=ArijHajji; integrated security = true");
-            optionsBuilder.UseLazyLoadingProxies(true); 
-
+            optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
+              Initial Catalog=AirportManagementDB;Integrated Security=true");
+            base.OnConfiguring(optionsBuilder);
         }
-
-        //data annotation
-
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            
-            modelBuilder.Entity<Passenger>().Property(p => p.FirstName)
-                .IsRequired()
-                .HasMaxLength(80)
-                .HasDefaultValue("name")
-                .HasColumnType("nchar") ;
-        }*/
-
-
-
-
-
-        // fluent api
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            modelBuilder.ApplyConfiguration(new PassengerConfiguration()); 
-            modelBuilder.ApplyConfiguration(new FlightConfiguration());
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            modelBuilder.ApplyConfiguration(new FlightConfiguration());
+            modelBuilder.ApplyConfiguration(new PassengerConfiguration());
             modelBuilder.ApplyConfiguration(new TicketConfiguration());
-            modelBuilder.ApplyConfiguration(new ReservationConfiguration());
-            modelBuilder.ApplyConfiguration(new SectionConfiguration());
-
-
-
-            //modelBuilder.Entity<Passenger>()
-            //    .HasDiscriminator<int>("Istraveller")
-            //    .HasValue<Passenger>(0)
-            //    .HasValue<Staff>(1)
-            //    .HasValue<Traveller>(2);
-
 
             modelBuilder.Entity<Staff>().ToTable("Staff");
-            modelBuilder.Entity<Traveller>().ToTable("Traveller");
-            modelBuilder.Entity<Passenger>().ToTable("Passenger");
-            modelBuilder.Entity<Reservation>().HasOne(r => r.Seat)
-                .WithMany(p => p.Reservations)
-                .HasForeignKey(f => f.SeatFk);
-            //modelBuilder.Entity<Ticket>().HasKey(p => new { p.FlightFk, p.PassengerFk });  
-        }
+            modelBuilder.Entity<Traveller>().ToTable("Travellers");
 
-        // change all properties to 100 chars max
+        }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
-            configurationBuilder.Properties<string>().HaveMaxLength(100).HaveColumnType("varchar");
-            configurationBuilder.Properties<DateTime>().HaveColumnType("date");
-            configurationBuilder.Properties<double>().HavePrecision(3, 2); 
-            
+        //    // Pre-convention model configuration goes here
+        //    configurationBuilder
+        //        .Properties<string>()
+        //        .HaveMaxLength(50);
+        //configurationBuilder
+        //    .Properties<decimal>()
+        //        .HavePrecision(8,3);
+            configurationBuilder
+              .Properties<DateTime>()
+                  .HaveColumnType("date");
         }
+
+
 
     }
 }
