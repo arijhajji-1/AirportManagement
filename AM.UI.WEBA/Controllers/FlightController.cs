@@ -17,7 +17,7 @@ namespace AM.UI.WEBA.Controllers
             this.serviceFlight = serviceFlight;
             this.servicePlane = servicePlane;   
         }
-        public ActionResult Index()
+        public ActionResult Index(string destination)
         {
             var list = serviceFlight.GetAll();
             return View(list);
@@ -30,9 +30,8 @@ namespace AM.UI.WEBA.Controllers
         }
         public ActionResult Search(string destination)
         {
-            return View(serviceFlight.GetAll().Where(f=>f.Destination.Contains(destination);
+            return View("index", serviceFlight.GetAll().Where(f => f.Destination.Contains(destination)));
         }
-
         // GET: FlightController/Create
         public ActionResult Create()
         {
