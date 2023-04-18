@@ -19,9 +19,16 @@ namespace AM.UI.WEBA.Controllers
         }
         public ActionResult Index(string destination)
         {
+
             var list = serviceFlight.GetAll();
+            if (destination != null)
+            {
+                list = list.Where(f => f.Destination.Contains(destination)).ToList();
+            }
             return View(list);
         }
+       
+
 
         // GET: FlightController/Details/5
         public ActionResult Details(int id)
@@ -42,10 +49,19 @@ namespace AM.UI.WEBA.Controllers
         // POST: FlightController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Flight collection)
+        public ActionResult Create(Flight collection, IFormFile piloteFile)
         {
             try
             {
+                if (piloteFile!=null)
+                {
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", piloteFile.FileName);
+                    var stream = new FileStream(path, FileMode.Create);
+                    piloteFile.CopyTo(stream);
+                    collection.Pilote = piloteFile.FileName;
+                }
+             
+
                 serviceFlight.Add(collection);
                 serviceFlight.Commit();
                 return RedirectToAction(nameof(Index));

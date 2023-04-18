@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.UI.WEBA\\wwwroot\\img\\cat.jpg",
+      "PackagePath": "staticwebassets\\img\\cat.jpg"
+    },
+    {
       "Id": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.UI.WEBA\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

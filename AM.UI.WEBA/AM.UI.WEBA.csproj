@@ -15,4 +15,8 @@
     <ProjectReference Include="..\AM.Infrastructure\AM.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>

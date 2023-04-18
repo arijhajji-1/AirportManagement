@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "llUXeZfV1lQfaxpuIUAuprowuGUPLQ76oRbY4+DKeds=",
+  "Hash": "ABJT/nsTRxMuwLVQOp91K+h/x412tJ59QyDXHtB18Tw=",
   "Source": "AM.UI.WEBA",
   "BasePath": "_content/AM.UI.WEBA",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.UI.WEBA\\wwwroot\\img\\cat.jpg",
+      "SourceId": "AM.UI.WEBA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.UI.WEBA\\wwwroot\\",
+      "BasePath": "_content/AM.UI.WEBA",
+      "RelativePath": "img/cat.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\cat.jpg"
     },
     {
       "Identity": "C:\\Users\\Arij\\Desktop\\AirportManagement\\AM.UI.WEBA\\wwwroot\\js\\site.js",

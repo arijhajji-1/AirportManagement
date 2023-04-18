@@ -16,6 +16,7 @@ namespace AM.ApplicationCore.Domain
         public DateTime EffectiveArrival { get; set; }
         public string Departure { get; set; }
         public string Destination { get; set; }
+        public string Pilote { get; set; }  
         //prop de navigation
         //public virtual List<Passenger> Passengers { get; set; }
         public virtual List<Ticket> Tickets { get; set; }
