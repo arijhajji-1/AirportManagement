@@ -20,7 +20,7 @@ namespace AM.UI.WEBA.Controllers
         public ActionResult Index(string destination)
         {
 
-            var list = serviceFlight.GetAll();
+            var list = serviceFlight.GetAll().ToList();
             if (destination != null)
             {
                 list = list.Where(f => f.Destination.Contains(destination)).ToList();

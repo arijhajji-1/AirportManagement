@@ -52,9 +52,6 @@
                 @Html.DisplayFor(modelItem => item.Airline)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FlightId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FlightDate)
             </td>
             <td>
@@ -70,7 +67,7 @@
                 @Html.DisplayFor(modelItem => item.Destination)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PlaneId)
+                <partial name="_DetailsPlane" model="item.Plane"></partial>
             </td>
             <td>
                     <img src="~/img/@item.Pilote"  width="50" height="50"/>
@@ -79,7 +76,6 @@
                 @Html.ActionLink("Edit", "Edit", new {  id=item.FlightId }) |
                 @Html.ActionLink("Details", "Details", new {  id=item.FlightId }) |
                 @Html.ActionLink("Delete", "Delete", new {  id=item.FlightId })
-                <a asp-action="Edit" asp-route-id="@item.FlightId">Edit</a>
             </td>
         </tr>
 }
