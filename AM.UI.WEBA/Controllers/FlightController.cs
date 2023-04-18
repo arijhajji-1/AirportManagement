@@ -75,17 +75,22 @@ namespace AM.UI.WEBA.Controllers
 
         // GET: FlightController/Edit/5
         public ActionResult Edit(int id)
+            
         {
-            return View();
+            var flight =serviceFlight.GetById(id);
+            ViewBag.Planes = new SelectList(servicePlane.GetAll(), "PlaneId","Information");
+            return View(flight);
         }
 
         // POST: FlightController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Flight collection)
         {
             try
             {
+                serviceFlight.Update(collection);
+                serviceFlight.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch
