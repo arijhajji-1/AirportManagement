@@ -28,6 +28,10 @@ namespace AM.UI.WEBA.Controllers
         {
             return View();
         }
+        public ActionResult Search(string destination)
+        {
+            return View(serviceFlight.GetAll().Where(f=>f.Destination.Contains(destination);
+        }
 
         // GET: FlightController/Create
         public ActionResult Create()
