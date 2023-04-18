@@ -25,6 +25,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Information)
             </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Flights)
+            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -44,6 +49,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Information)
             </td>
+                <td>
+                    @foreach (var flight in item.Flights)
+                    {
+                        
+                   
+                    <partial name="_DetailsFlight" model="flight"></partial>
+                    }
+                </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

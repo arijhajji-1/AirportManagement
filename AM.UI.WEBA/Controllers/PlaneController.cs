@@ -19,7 +19,7 @@ namespace AM.UI.WEBA.Controllers
         // GET: PlaneController
         public ActionResult Index()
         {
-            var list = servicePlane.GetAll();
+            var list = servicePlane.GetAll().ToList();
 
             return View(list);
         }
